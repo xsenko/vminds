@@ -1,5 +1,7 @@
-once docker compose u calistircaz
-compose da zaten 9093 u disari verdik, boylece non-docker clientlar da baglanabilecek.
-orda onemli olan bir zookeeper da allow_anon_login = yes dememiz
-ikincisi ise kafka da allow_plaintext_listener a yes dememiz, normalde bunu no yapip secure bir sekilde baglanmamiz lazim ssl gibi
-PLAINTEXT means the listener will be without authentication and non-encrypted.
+docker-compose file have zookeeper and one broker configuration,
+you can run directly docker-compose up
+I defined 2 port one is for docker network (9092), other is accepting outside connections with 9093.
+There is no SSL or security configuration, broker accepts every request.
+Again there is no security config on zookeper, allow_anon_login = yes configured.
+
+I write simple Producer and Consumer, you can run producer then consumer with java -jar
