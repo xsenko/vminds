@@ -1,0 +1,2 @@
+For this question, I used memoization technique to hold previous results of fibonacci. For example to find fibonacci value of 10, if we already know fib 8 and 9,
+we can direclty call them from dictionary.

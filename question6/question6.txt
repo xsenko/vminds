@@ -1,0 +1,16 @@
+I prepared two different images, with their dockerfile's. In mysql image, I used a csv called mysql_sum.csv which have some columns of 
+original one. I think creating all other columns can be time consuming.
+I used below command
+awk '{print $1, $2, $4, $8}' mysql.csv > mysql_sum.csv
+It also got 1.sql and 2.sql, my first plan was adding csv directly to database with using INFILE, but got some problems related with mysql image
+so I decided to add rows in spring boot application.
+
+Second image is rest endpoint, I used spring boot and for JP, used spring data. This application have some missing parts, like tests and some exception handling.
+it got one endpoint, usage is:
+localhost:8080/api/user/<user id>
+this rest endpoint returns list of records, if there is no record return 404 and error message.
+
+To run and test application execute
+docker-compose up
+
+then you can query from localhost:8080/api/user/

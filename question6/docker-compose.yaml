@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  mysql:
+    build: ./mysql
+    image: mysql
+    container_name: mysql_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+       
+  spring_boot:
+    build: ./rest_service
+    container_name: rest_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "mysql"
+    environment:
+      WAIT_BEFORE_HOSTS: 5
+      WAIT_HOSTS: mysql:3306

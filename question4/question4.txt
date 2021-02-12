@@ -1,0 +1,17 @@
+
+For this task, I used linux awk and comm, ID's should be sorted to use in comm.
+Since it is just finding the missing id's I think linux awk and comm commands are enough, but if it was more complicated one realted with
+csv's probably I'll use pandas. 
+
+# for mysql.csv skip first row, take the first column (id) then sort
+awk 'NR>1 {print $1}' mysql.csv | sort > mysql_sorted_id.txt
+
+# in hadoop.csv I first deleted first '(' char and last ')' char, then skip first row (header), then only take first column and sort
+awk '{print substr($1,2,length($1)-5);}' hadoop.csv | awk 'NR>1' | awk -F ',' '{print $1}' | sort > hadoop_sorted_id.txt
+
+id's in mysql but not in hadoop
+comm -23 mysql_sorted_id.txt hadoop_sorted_id.txt
+
+id's in hadoop but not in mysql
+comm -13 mysql_sorted_id.txt hadoop_sorted_id.txt
+

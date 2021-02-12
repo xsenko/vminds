@@ -1,0 +1,3 @@
+I used bit manuplation and bit masking for solving this problem. If there is no zero pattern between 1's, program returns -1. Otherwise program looks the max 0's
+with using previous and current indices. Another solution may be using two indices without bit manuplation but convert to binary value and put in list and track 0's 
+in this list.
